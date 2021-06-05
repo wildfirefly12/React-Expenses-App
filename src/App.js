@@ -32,6 +32,8 @@ function App() {
         console.log(expenses);
     }
 
+
+
   return (
     <div>
         <NewExpense onAddExpenseData={addExpenseDataHandler}/>
