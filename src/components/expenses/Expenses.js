@@ -1,23 +1,20 @@
 import "./Expenses.css";
 import ExpenseItem from "./ExpenseItem";
-import Filter from "../filter/Filter";
+import ExpenseFilter from "./ExpenseFilter";
 
 function Expenses(props){
 
     const expenses = props.expenses;
 
     const filterExpenseDataHandler = (year) => {
-        const filteredExpenses = expenses.filter(expense => expense.date.getFullYear() == year);
+        const filteredExpenses = expenses.filter((expense) => expense.date.toLocaleString('en-US', {year: 'numeric'}) === year);
         console.log(filteredExpenses);
     }
 
     return (
         <div className={"expenses"}>
-            <Filter onFilterExpenseDataHandler={filterExpenseDataHandler}/>
-            <ExpenseItem title={expenses[0].title} amount={expenses[0].amount} date={expenses[0].date}></ExpenseItem>
-            <ExpenseItem title={expenses[1].title} amount={expenses[1].amount} date={expenses[1].date}></ExpenseItem>
-            <ExpenseItem title={expenses[2].title} amount={expenses[2].amount} date={expenses[2].date}></ExpenseItem>
-            <ExpenseItem title={expenses[3].title} amount={expenses[3].amount} date={expenses[3].date}></ExpenseItem>
+            <ExpenseFilter onFilterExpenseDataHandler={filterExpenseDataHandler}/>
+            {props.expenses.map(expense => <ExpenseItem title={expense.title} amount={expense.amount} date={expense.date}/>)}
         </div>
     )
 }

@@ -1,6 +1,6 @@
-import "./Filter.css";
+import "./ExpenseFilter.css";
 
-const Filter = (props) => {
+const ExpenseFilter = (props) => {
 
     const onYearSelectHandler = (event) => {
         const year = event.target.value;
@@ -22,4 +22,4 @@ const Filter = (props) => {
     )
 }
 
-export default Filter;
+export default ExpenseFilter;
